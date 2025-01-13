@@ -1,0 +1,135 @@
+// Variables
+:root {
+	--main-color: #343a40;
+	--secondary-color: #fff;
+	--third-color: #007bff;
+	--header-height: 45px;
+}
+
+// Common Styles
+*,
+html,
+body {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	scroll-behavior: smooth;
+	font-family: 'Roboto', sans-serif;
+	line-height: 1.5;
+}
+
+a {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+
+p {
+	margin: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+	box-shadow: none !important;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px var(--secondary-color);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--main-color);
+}
+
+// Global Styles
+:global {
+	.img-logo {
+		width: 35px;
+		height: 35px;
+	}
+
+	.toast-position {
+		top: var(--header-height) !important;
+		right: 0;
+		width: 18vw;
+	}
+
+	.cms_normal-hover {
+		cursor: pointer;
+		opacity: 0.9;
+	}
+
+	.cms_animate-hover {
+		user-select: none;
+		transition: all 0.15s ease-out;
+		&:hover,
+		&:target {
+			cursor: pointer;
+			opacity: 0.9;
+			scale: 0.98;
+			background-color: #b1b1b139;
+		}
+	}
+
+	.background-workspace {
+		background-color: var(--main-color);
+		color: var(--secondary-color);
+		transition: transform 0.3s ease-out;
+	}
+
+	.background-workspace.slide-out {
+		transform: translateX(-100%);
+	}
+
+	.background-workspace.slide-in {
+		transform: translateX(0);
+	}
+
+	.header-height {
+		height: var(--header-height);
+	}
+
+	.dropdown-height {
+		top: calc(var(--header-height) / 15) !important;
+		max-height: 50vh;
+		overflow-y: auto;
+	}
+
+	.user-avatar {
+		width: calc(var(--header-height) / 1.2);
+		height: calc(var(--header-height) / 1.2);
+		overflow: hidden;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.user-avatar img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 50%;
+	}
+
+	.btn-primary {
+		background-color: var(--third-color) !important;
+	}
+
+	.form-warning {
+		font-size: 12px;
+	}
+
+	.card {
+		margin: 20px 0 0 0;
+	}
+}

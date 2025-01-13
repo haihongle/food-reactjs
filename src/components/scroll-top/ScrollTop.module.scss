@@ -1,0 +1,19 @@
+.scroll-to-top {
+	background-color: var(--third-color);
+	border-radius: 50%;
+	width: 45px;
+	height: 45px;
+	position: fixed;
+	bottom: 55px;
+	right: 10px;
+	z-index: 98;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.arrow-up {
+	color: var(--secondary-color);
+	font-size: 28px;
+	line-height: 50px;
+}
