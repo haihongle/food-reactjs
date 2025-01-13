@@ -1,0 +1,92 @@
+.loginContainer {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15vh;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('../../../public/Background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        filter: blur(1px);
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    }
+
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+.loginForm {
+    border-radius: 10px;
+    border: 0.5px solid #aca4a49b;
+    padding: 100px 50px;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.formGroup {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.loginInput {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.81);
+    border: none;
+    height: 50px;
+    border: 1px solid rgba(184, 184, 184, 0.81);
+    border-radius: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    &:hover,
+    &:focus {
+        background: rgba(255, 255, 255, 0.65);
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.fieldIcon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: rgba(68, 68, 68, 0.9);
+}
+
+.loginButton {
+    width: 100%;
+    background: var(--third-color);
+    border: 1px solid rgba(184, 184, 184, 0.81);
+    color: #fff;
+    height: 50px;
+    border-radius: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    &:hover {
+        opacity: 0.8;
+        outline: none;
+        box-shadow: none;
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+}
+
+.registerLink{
+    color: rgb(50, 50, 199) !important;
+    border: none;
+    // background:  rgba(170, 166, 166, 0.608);
+}

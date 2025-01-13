@@ -1,0 +1,275 @@
+/* General styling */
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0;
+}
+
+.cartCount {
+	position: absolute;
+	top: 1px;
+	background-color: red;
+	color: white;
+	font-size: 10px;
+	padding: 2px 6px;
+	border-radius: 50%;
+	line-height: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 18px;
+	height: 18px;
+}
+
+/* Animations */
+@keyframes slideIn {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideInFromRight {
+	0% {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/* Header Styling */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem 2rem;
+	background-color: #343a40;
+	color: white;
+	width: 100%;
+	box-sizing: border-box;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+.logoLink {
+	display: flex;
+	align-items: center;
+}
+
+.logo {
+	height: 60px;
+}
+
+.navMenu {
+	ul {
+		list-style: none;
+		display: flex;
+		margin: 0;
+		padding: 0;
+		gap: 2rem;
+	}
+	li {
+		margin: 0;
+	}
+	a {
+		color: white;
+		text-decoration: none;
+		font-size: 1.1rem;
+		padding: 0.5rem;
+		border-bottom: 2px solid transparent;
+		transition: border-bottom 0.3s ease;
+		&:hover {
+			color: rgb(212, 166, 89);
+			border-bottom: 2px solid rgb(212, 166, 89);
+		}
+	}
+	position: relative;
+	animation: slideIn 1s ease-in-out;
+}
+
+/* Footer */
+.footer {
+	background: linear-gradient(to right, rgb(88, 57, 2), #8b4919);
+	color: white;
+	padding: 40px 20px;
+	width: 100%;
+	position: relative;
+	bottom: -32rem;
+	border-radius: 1rem 9rem;
+}
+
+.footerContent {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	max-width: 1200px;
+	margin: 0 auto;
+	gap: 10rem;
+}
+
+.footerLeft,
+.footerCenter,
+.footerRight,
+.footerAddress {
+	flex: 1;
+	margin: 0 10px;
+	text-align: left;
+}
+
+.footerLeft h3,
+.footerCenter h4,
+.footerRight h4,
+.footerAddress h4 {
+	font-size: 24px;
+	margin-bottom: 15px;
+	border-bottom: 2px solid #ffd700;
+	padding-bottom: 5px;
+}
+
+.footerLeft p,
+.footerCenter ul li a,
+.footerAddress a {
+	font-size: 14px;
+	line-height: 1.6;
+	transition:
+		color 0.3s ease,
+		transform 0.3s ease;
+}
+
+.footerLeft p:hover,
+.footerCenter ul li a:hover,
+.footerAddress a:hover {
+	color: #ffd700;
+	transform: translateY(-2px);
+}
+
+.footerCenter ul {
+	list-style: none;
+	padding: 0;
+}
+
+.footerCenter ul li {
+	margin-bottom: 10px;
+}
+
+.footerCenter ul li a {
+	color: white;
+	text-decoration: none;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	transition:
+		color 0.3s ease,
+		transform 0.3s ease;
+}
+
+.footerCenter ul li a:hover {
+	color: #ffd700;
+	transform: translateX(4px);
+}
+
+.socialIcons {
+	display: flex;
+	gap: 15px;
+}
+
+.socialIcons a {
+	color: white;
+	font-size: 20px;
+	transition:
+		color 0.3s ease,
+		transform 0.3s ease;
+}
+
+.socialIcons a:hover {
+	color: #ffd700;
+	transform: scale(1.1);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+	.footerContent {
+		gap: 5rem;
+	}
+}
+
+@media (max-width: 992px) {
+	.navMenu {
+		ul {
+			flex-direction: column;
+			gap: 1rem;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.header {
+		flex-direction: column;
+		padding: 1rem;
+	}
+
+	.footerContent {
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.footerLeft,
+	.footerCenter,
+	.footerRight {
+		text-align: center;
+	}
+
+	.footerCenter ul {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+@media (max-width: 576px) {
+	.cartCount {
+		font-size: 8px;
+		padding: 1px 4px;
+		min-width: 15px;
+		height: 15px;
+	}
+
+	.footerLeft h3,
+	.footerCenter h4,
+	.footerRight h4,
+	.footerAddress h4 {
+		font-size: 20px;
+	}
+
+	.footerLeft p,
+	.footerCenter ul li a,
+	.footerAddress a {
+		font-size: 12px;
+	}
+}
+
+/* Small Devices (Phones) */
+@media (max-width: 375px) {
+	.header {
+		padding: 0.5rem;
+	}
+
+	.navMenu ul {
+		gap: 0.5rem;
+	}
+
+	.logo {
+		height: 40px;
+	}
+}

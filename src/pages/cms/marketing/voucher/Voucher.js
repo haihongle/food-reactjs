@@ -4,7 +4,6 @@ function Voucher() {
 	return (
 		<div>
 			<h1>Voucher page</h1>
-			<button onClick={() => Toast.success('haha')}>BUTTON</button>
 		</div>
 	);
 }

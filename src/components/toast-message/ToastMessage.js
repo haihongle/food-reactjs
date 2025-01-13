@@ -14,7 +14,7 @@ const info = (message) => {
 const success = (message) => {
 	toast.success(
 		<div>
-			<b style={{ fontSize: '1.2rem' }}>Success</b>
+			<b style={{ fontSize: '1.1rem' }}>Success</b>
 			<div>{message}</div>
 		</div>,
 		{
@@ -26,11 +26,11 @@ const success = (message) => {
 const warning = (message) => {
 	toast.warn(
 		<div>
-			<b style={{ fontSize: '1.2rem' }}>Warning</b>
+			<b style={{ fontSize: '1.1rem' }}>Warning</b>
 			<div>{message}</div>
 		</div>,
 		{
-			autoClose: 5000,
+			autoClose: 2000,
 		}
 	);
 };
@@ -38,11 +38,11 @@ const warning = (message) => {
 const error = (message) => {
 	toast.error(
 		<div>
-			<b style={{ fontSize: '1.2rem' }}>Error</b>
+			<b style={{ fontSize: '1.1rem' }}>Error</b>
 			<div>{message}</div>
 		</div>,
 		{
-			autoClose: 5000,
+			autoClose: 3000,
 		}
 	);
 };

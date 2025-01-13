@@ -1,14 +1,133 @@
 .header-workspace {
-    z-index: 1;
-    position: sticky;
-    background-color: white;
-    top: 0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	position: sticky;
+	background: var(--main-color);
+	top: 0;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+
+	.dropdown-zindex {
+		z-index: 3;
+	}
+	
+	.header-item {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		transition: opacity 0.3s ease-in;
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		&::after {
+			margin-left: 10px;
+			vertical-align: middle;
+			border: none;
+			color: var(--secondary-color);
+			content: '\f107';
+			font-size: 12px;
+			font-family: 'Font Awesome 5 Free';
+			font-weight: 900;
+			transition: 0.5s;
+		}
+
+		@media (max-width: 992px) {
+			&::after {
+				content: none;
+			}
+		}
+	}
+}
+
+[aria-expanded='true']::after {
+	transform: rotate(-180deg);
+}
+
+.body-workspace {
+	min-height: 100vh;
+
+	.card-bg {
+		background: rgba(255, 255, 255, 0.94);
+		min-height: 80vh;
+	}
 }
 
 .footer-workspace {
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 500;
+	box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+	font-size: 1.2rem;
+	background: var(--main-color);
+	color: var(--secondary-color);
+}
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 250px;
+	height: 100vh;
+	overflow-y: auto;
+	background: var(--main-color);
+	transition: left 0.5s ease-in;
+	z-index: 999;
+
+	&.open {
+		left: -250px;
+	}
+}
+
+.content {
+	position: relative;
+	background-image: url('../../../public/Background.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-left: 250px;
+	width: calc(100% - 250px);
+	transition:
+		margin-left 0.5s ease-in,
+		width 0.5s ease-in;
+}
+
+@media (min-width: 992px) {
+	.sidebar {
+		left: 0;
+
+		&.open {
+			left: -250px;
+		}
+	}
+
+	.content {
+		margin-left: 250px;
+		width: calc(100% - 250px);
+
+		&.open {
+			margin-left: 0;
+			width: 100%;
+		}
+	}
+}
+
+@media (max-width: 992px) {
+	.sidebar {
+		left: -250px;
+
+		&.open {
+			left: 0;
+		}
+	}
+
+	.content {
+		margin-left: 0;
+		width: 100%;
+	}
+}
+
+.new-dot {
+	position: absolute;
+	top: 0;
+	border-radius: 50%;
+	background-color: red;
+	padding: 6px;
 }

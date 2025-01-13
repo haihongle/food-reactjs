@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfoodstorecms=self.webpackChunkfoodstorecms||[]).push([[829],{3829:(e,s,o)=>{o.r(s),o.d(s,{default:()=>c});var r=o(579);const c=function(){return(0,r.jsx)("div",{children:(0,r.jsx)("h1",{children:"Promotion page"})})}}}]);
+//# sourceMappingURL=829.badec1f8.chunk.js.map

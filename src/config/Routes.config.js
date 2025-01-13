@@ -1,84 +1,398 @@
-import { Route } from 'react-router';
-import MainLayout from '../layouts/MainLayout';
+import { Routes, Route } from 'react-router';
+import { lazy } from 'react';
+import NotFound from '../pages/not-found/NotFound';
+import PrivateRoute from '../utils/PrivateRoute';
+import LoadingSpiner from '../components/loading-spinner/LoadingSpiner';
+import { Suspense } from 'react';
+
+// Import Layout
 import ClientLayout from '../layouts/client/ClientLayout';
 import CMSLayout from '../layouts/cms/CMSLayout';
-import Home from '../pages/client/home/home';
-import Authen from '../pages/auth/Authen';
-import Cart from '../pages/client/cart/Cart';
-import AccountantLayout from '../pages/cms/accountant/AccountantLayout';
-import HostLayout from '../pages/cms/host/HostLayout';
-import KitchenLayout from '../pages/cms/kitchen/KitchenLayout';
-import LeaderLayout from '../pages/cms/leader/LeaderLayout';
-import ManagerLayout from '../pages/cms/manager/ManagerLayout';
+import CustomerLayout from '../pages/cms/customer/CustomerLayout';
+import MenuLayout from '../pages/cms/menus/MenuLayout';
+import EmployeeLayout from '../pages/cms/employees/EmployeeLayout';
 import MarketingLayout from '../pages/cms/marketing/MarketingLayout';
-import ShipperLayout from '../pages/cms/shipper/ShipperLayout';
-import Salary from '../pages/cms/accountant/salary/Salary';
-import Stock from '../pages/cms/accountant/stock/Stock';
-import WarehouseLayout from '../pages/cms/accountant/warehouse/WarehouseLayout';
-import Material from '../pages/cms/accountant/warehouse/Material/Material';
-import OrderList from '../pages/cms/host/order/OrderList';
-import KitchenOrderList from '../pages/cms/kitchen/order/OrderList';
-import KitchenOrderDetail from '../pages/cms/kitchen/order/OrderDetail';
-import LeaderEmployee from '../pages/cms/leader/employee/Employee';
-import Problem from '../pages/cms/leader/problem/Problem';
-import Account from '../pages/cms/manager/account/Account';
-import Customer from '../pages/cms/manager/customer/Customer';
-import Employee from '../pages/cms/manager/employee/Employee';
-import Permission from '../pages/cms/manager/permission/Permission';
-import Report from '../pages/cms/manager/report/Report';
-import Promotion from '../pages/cms/marketing/promotion/Promotion';
-import Voucher from '../pages/cms/marketing/voucher/Voucher';
-import NewOrder from '../pages/cms/shipper/order/NewOrder';
-import MenuList from '../pages/cms/kitchen/menu/MenuList';
-import CreateNew from '../pages/cms/kitchen/menu/CreateNew';
-import NotFound from '../pages/NotFound';
+import OrderLayout from '../pages/cms/orders/OrderLayout';
+import ScheduleLayout from '../pages/cms/schedules/ScheduleLayout';
+import ReportLayout from '../pages/cms/reports/ReportLayout';
+import WarehouseLayout from '../pages/cms/warehouse/WarehouseLayout';
+import AccountantLayout from '../pages/cms/accountant/AccountantLayout';
 
-const routes = (
-	<Route element={<MainLayout />}>
-		<Route element={<ClientLayout />}>
-			<Route path="/" element={<Home />} />
-			<Route path="authen" element={<Authen />} />
-			<Route path="cart" element={<Cart />} />
-		</Route>
-		<Route path="cms" element={<CMSLayout />}>
-			<Route path="accountant" element={<AccountantLayout />}>
-				<Route path="salary" element={<Salary />} />
-				<Route path="stock" element={<Stock />} />
-				<Route path="warehouse" element={<WarehouseLayout />}>
-					<Route path="material" element={<Material />} />
-				</Route>
-			</Route>
-			<Route path="host" element={<HostLayout />}>
-				<Route path="order-list" element={<OrderList />} />
-			</Route>
-			<Route path="kitchen" element={<KitchenLayout />}>
-				<Route path="order-list" element={<KitchenOrderList />} />
-				<Route path="order-detail" element={<KitchenOrderDetail />} />
-				<Route path="menu" element={<MenuList />} />
-				<Route path="new-menu" element={<CreateNew />} />
-			</Route>
-			<Route path="leader" element={<LeaderLayout />}>
-				<Route path="today-employee" element={<LeaderEmployee />} />
-				<Route path="problem" element={<Problem />} />
-			</Route>
-			<Route path="manager" element={<ManagerLayout />}>
-				<Route path="account" element={<Account />} />
-				<Route path="customer" element={<Customer />} />
-				<Route path="employee" element={<Employee />} />
-				<Route path="permission" element={<Permission />} />
-				<Route path="report" element={<Report />} />
-			</Route>
-			<Route path="marketing" element={<MarketingLayout />}>
-				<Route path="promotion" element={<Promotion />} />
-				<Route path="voucher" element={<Voucher />} />
-			</Route>
-			<Route path="shipper" element={<ShipperLayout />}>
-				<Route path="new-order" element={<NewOrder />} />
-			</Route>
-		</Route>
-	</Route>
+// Lazy load components
+const MainLayout = lazy(() => import('../layouts/MainLayout'));
+
+//---- Client
+const Home = lazy(() => import('../pages/client/home/home'));
+const Cart = lazy(() => import('../pages/client/cart/Cart'));
+
+//User
+const Register = lazy(() => import('../pages/userinfor/Register'));
+const UserProfile = lazy(() => import('../pages/userinfor/UserProfile'));
+
+//---- CMS
+
+const Login = lazy(() => import('../pages/login/Login'));
+const CMSInfor = lazy(() => import('../pages/cms/cms-infor/cms-infor'));
+const CMSHome = lazy(() => import('../pages/cms/cms-home/CMSHome'));
+
+//---- Customer
+const Customer = lazy(() => import('../pages/cms/customer/customer-list/CustomerList'));
+const Problem = lazy(() => import('../pages/cms/customer/problems/Problem'));
+
+//---- Employee
+const EmployeeList = lazy(() => import('../pages/cms/employees/employee-list/EmployeeList'));
+const CreateUser = lazy(() => import('../pages/cms/employees/user/CreateUser'));
+const Permission = lazy(() => import('../pages/cms/employees/permission/Permission'));
+const Salary = lazy(() => import('../pages/cms/employees/salary/Salary'));
+
+//---- Marketing
+const Promotion = lazy(() => import('../pages/cms/marketing/promotion/Promotion'));
+const Voucher = lazy(() => import('../pages/cms/marketing/voucher/Voucher'));
+
+//---- Menu
+const MenuList = lazy(() => import('../pages/cms/menus/menu/MenuList'));
+
+//---- Order
+const AllOrders = lazy(() => import('../pages/cms/orders/all-orders/AllOrders'));
+const WaitingOrders = lazy(() => import('../pages/cms/orders/waiting-orders/WaitingOrders'));
+const CompletedOrders = lazy(() => import('../pages/cms/orders/completed-orders/CompletedOrders'));
+const CancelOrders = lazy(() => import('../pages/cms/orders/cancel-orders/CancelOrders'));
+
+//---- Schedule
+const TodaySchedule = lazy(() => import('../pages/cms/schedules/today-schedule/TodaySchedule'));
+const ArrageSchedule = lazy(
+	() => import('../pages/cms/schedules/arrange-schedule/ArrangeSchedule')
 );
 
-const notfoundRoute = <Route path="*" element={<NotFound />} />;
+//---- Reports
+const LeaveApplications = lazy(
+	() => import('../pages/cms/reports/leave-applications/LeaveApplications')
+);
+// const LeaveApplications = lazy(
+// 	() => import('../pages/cms/reports/leave-applications/LeaveApplications')
+// );
+const Revenues = lazy(() => import('../pages/cms/reports/revenues/Revenues'));
 
-export { routes, notfoundRoute };
+//---- Warehouse
+const Material = lazy(() => import('../pages/cms/warehouse/materials/Material'));
+const Inventory = lazy(() => import('../pages/cms/warehouse/inventory/Inventory'));
+const InventoryHistory = lazy(() => import('../pages/cms/warehouse/inventory/InventoryHistory'));
+
+//---- Accountant
+const ImExRecipe = lazy(() => import('../pages/cms/accountant/recipe/ImExRecipe'));
+const ImExRecipeDetail = lazy(() => import('../pages/cms/accountant/recipe/ImExRecipeDetail'));
+const ImExDetailHistory = lazy(
+	() => import('../pages/cms/accountant/im-ex-history/ImExDetailHistory')
+);
+const CreateRecipeForm = lazy(() => import('../pages/cms/accountant/new-recipe/CreateRecipeForm'));
+
+const routes = (
+	<Routes>
+		<Route element={<MainLayout />}>
+			<Route element={<ClientLayout />}>
+				<Route
+					path="/"
+					element={
+						<Suspense fallback={<LoadingSpiner />}>
+							<Home />
+						</Suspense>
+					}
+				/>
+				<Route
+					path="cart"
+					element={
+						<Suspense fallback={<LoadingSpiner />}>
+							<Cart />
+						</Suspense>
+					}
+				/>
+			</Route>
+
+			<Route path="cms">
+                <Route
+                    path="login"
+                    element={
+                        <Suspense fallback={<LoadingSpiner />}>
+                            <Login />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="registerUser"
+                    element={
+                        <Suspense fallback={<LoadingSpiner />}>
+                            <Register />
+                        </Suspense>
+                    }
+                />
+				
+				<Route
+					path="userProfile"
+					element={
+						<Suspense fallback={<LoadingSpiner />}>
+							<UserProfile />
+						</Suspense>
+					}
+				/>
+
+				<Route element={<PrivateRoute />}>
+					<Route element={<CMSLayout />}>
+						<Route
+							path="home"
+							element={
+								<Suspense fallback={<LoadingSpiner />}>
+									<CMSHome />
+								</Suspense>
+							}
+						/>
+						<Route
+							path="user-info"
+							element={
+								<Suspense fallback={<LoadingSpiner />}>
+									<CMSInfor />
+								</Suspense>
+							}
+						/>
+						<Route path="customers" element={<CustomerLayout />}>
+							<Route
+								path="customer-list"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<Customer />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="problems"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<Problem />
+									</Suspense>
+								}
+							/>
+						</Route>
+
+						<Route path="employees" element={<EmployeeLayout />}>
+							<Route
+								path="employee-list"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<EmployeeList />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="salary"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<Salary />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="users"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<CreateUser />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="permissions"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<Permission />
+									</Suspense>
+								}
+							/>
+						</Route>
+
+						<Route path="marketing" element={<MarketingLayout />}>
+							<Route
+								path="promotions"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<Promotion />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="vouchers"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<Voucher />
+									</Suspense>
+								}
+							/>
+						</Route>
+
+						<Route path="menu" element={<MenuLayout />}>
+							<Route
+								path="menu-list"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<MenuList />
+									</Suspense>
+								}
+							/>
+						</Route>
+
+						<Route path="orders" element={<OrderLayout />}>
+							<Route
+								path="all-orders"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<AllOrders />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="waiting-orders"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<WaitingOrders status={'WAITING'} />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="cancel-orders"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<CancelOrders status={'FAILED'} />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="completed-orders"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<CompletedOrders status={'COMPLETED'} />
+									</Suspense>
+								}
+							/>
+						</Route>
+
+						<Route path="schedules" element={<ScheduleLayout />}>
+							<Route
+								path="today-schedule"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<TodaySchedule />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="arrange-schedule"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<ArrageSchedule />
+									</Suspense>
+								}
+							/>
+						</Route>
+
+						<Route path="reports" element={<ReportLayout />}>
+							{/*<Route*/}
+							{/*	path="leave-applications"*/}
+							{/*	element={*/}
+							{/*		<Suspense fallback={<LeaveApplications />}>*/}
+							{/*			<ArrageSchedule />*/}
+							{/*		</Suspense>*/}
+							{/*	}*/}
+							{/*/>*/}
+							<Route
+								path="revenues"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<Revenues />
+									</Suspense>
+								}
+							/>
+						</Route>
+
+						<Route path="warehouse" element={<WarehouseLayout />}>
+							<Route
+								path="materials"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<Material />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="inventory"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<Inventory />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="inventory-history"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<InventoryHistory />
+									</Suspense>
+								}
+							/>
+						</Route>
+
+						<Route path="accountant" element={<AccountantLayout />}>
+							<Route
+								path="import-recipe"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<ImExRecipe repType={'IMPORT'} />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="import-history"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<ImExDetailHistory repType={'IMPORT'} />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="export-recipe"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<ImExRecipe repType={'EXPORT'} />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="export-history"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<ImExDetailHistory repType={'EXPORT'} />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="recipe/create"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<CreateRecipeForm />
+									</Suspense>
+								}
+							/>
+							<Route
+								path="recipe/:id"
+								element={
+									<Suspense fallback={<LoadingSpiner />}>
+										<ImExRecipeDetail />
+									</Suspense>
+								}
+							/>
+						</Route>
+					</Route>
+				</Route>
+			</Route>
+		</Route>
+		<Route path="*" element={<NotFound />} />
+	</Routes>
+);
+
+export default routes;

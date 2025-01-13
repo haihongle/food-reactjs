@@ -1,11 +1,13 @@
-import { Outlet } from 'react-router';
+import {Outlet} from 'react-router';
 
 function AccountantLayout() {
-	return (
-		<div>
-			<Outlet></Outlet>
-		</div>
-	);
+    return (
+        <main>
+            <Outlet>
+
+            </Outlet>
+        </main>
+    );
 }
 
 export default AccountantLayout;

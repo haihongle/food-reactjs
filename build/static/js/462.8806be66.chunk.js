@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfoodstorecms=self.webpackChunkfoodstorecms||[]).push([[462],{3462:(e,s,r)=>{r.r(s),r.d(s,{default:()=>n});var c=r(579);const n=function(){return(0,c.jsx)("div",{children:(0,c.jsx)("h1",{children:"ArrangeSchedule"})})}}}]);
+//# sourceMappingURL=462.8806be66.chunk.js.map

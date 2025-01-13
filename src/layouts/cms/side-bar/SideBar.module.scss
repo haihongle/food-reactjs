@@ -1,0 +1,20 @@
+.hover-site {
+	transition: 0.3s ease;
+	&:hover {
+		background-color: var(--third-color);
+		border-top-right-radius: 40px;
+		border-bottom-right-radius: 40px;
+		scale: 1.1;
+	}
+}
+
+.activeSite {
+	background-color: var(--third-color);
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 40px;
+	scale: 1.1;
+}
+
+.sidebar-home {
+	color: var(--fourth-color);
+}

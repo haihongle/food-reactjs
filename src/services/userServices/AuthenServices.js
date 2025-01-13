@@ -9,8 +9,18 @@ const login = async function (data) {
 	}
 };
 
+const register = async function (data) {
+    try {
+        const response = await appLogin.post('/user-info/registerUser', data);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
 const authenServices = {
 	login,
+	register
 };
 
 export default authenServices;

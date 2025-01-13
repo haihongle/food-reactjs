@@ -1,9 +1,10 @@
 // Variables
 :root {
-	--main-color: #343a40;
+	--main-color: linear-gradient(150deg, #152243, #464d5b);
 	--secondary-color: #fff;
-	--third-color: #007bff;
-	--header-height: 45px;
+	--third-color: #178582;
+	--fourth-color: #cab421;
+	--header-height: 60px;
 }
 
 // Common Styles
@@ -15,7 +16,6 @@ body {
 	padding: 0;
 	scroll-behavior: smooth;
 	font-family: 'Roboto', sans-serif;
-	line-height: 1.5;
 }
 
 a {
@@ -24,7 +24,14 @@ a {
 	color: inherit;
 }
 
-p {
+ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	margin: 0;
 }
 
@@ -40,6 +47,7 @@ select:focus {
 
 ::-webkit-scrollbar {
 	width: 8px;
+	height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -50,17 +58,18 @@ select:focus {
 	background: var(--main-color);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
 // Global Styles
 :global {
-	.img-logo {
-		width: 35px;
-		height: 35px;
-	}
-
 	.toast-position {
 		top: var(--header-height) !important;
 		right: 0;
-		width: 18vw;
+		width: 25vw;
 	}
 
 	.cms_normal-hover {
@@ -83,15 +92,14 @@ select:focus {
 	.background-workspace {
 		background-color: var(--main-color);
 		color: var(--secondary-color);
-		transition: transform 0.3s ease-out;
-	}
-
-	.background-workspace.slide-out {
-		transform: translateX(-100%);
-	}
-
-	.background-workspace.slide-in {
 		transform: translateX(0);
+		opacity: 1;
+		visibility: visible;
+		transition:
+			transform 0.5s ease-in-out,
+			opacity 0.3s ease-in-out,
+			visibility 0.3s ease-in-out;
+		z-index: 99;
 	}
 
 	.header-height {
@@ -99,14 +107,17 @@ select:focus {
 	}
 
 	.dropdown-height {
-		top: calc(var(--header-height) / 15) !important;
+		top: calc(var(--header-height) / 12) !important;
 		max-height: 50vh;
+		max-width: 50vw;
+		max-height: 100vw;
 		overflow-y: auto;
+		z-index: 10;
 	}
 
 	.user-avatar {
-		width: calc(var(--header-height) / 1.2);
-		height: calc(var(--header-height) / 1.2);
+		width: calc(var(--header-height) / 1.4);
+		height: calc(var(--header-height) / 1.4);
 		overflow: hidden;
 		border-radius: 50%;
 		display: flex;
@@ -123,6 +134,33 @@ select:focus {
 
 	.btn-primary {
 		background-color: var(--third-color) !important;
+		border: none;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	.btn-secondary {
+		background-color: var(--fourth-color) !important;
+		border: none;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	.btn-primary-circle {
+		background-color: var(--third-color) !important;
+		border: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		color: var(--secondary-color);
+		width: calc(var(--header-height) / 1.4);
+		height: calc(var(--header-height) / 1.4);
+		&:hover {
+			opacity: 0.8;
+		}
 	}
 
 	.form-warning {

@@ -4,6 +4,7 @@
     font-size: 1.1rem;
 	user-select: none;
 	color: var(--third-color);
+	font-weight: 600;
 	&:not(:last-child)::after {
 		content: ' > ';
 	}
