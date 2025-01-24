@@ -36,8 +36,10 @@ const CMSInfor = lazy(() => import('../pages/cms/cms-infor/cms-infor'));
 const CMSHome = lazy(() => import('../pages/cms/cms-home/CMSHome'));
 
 //---- Customer
-const Customer = lazy(() => import('../pages/cms/customer/customer-list/CustomerList'));
-const Problem = lazy(() => import('../pages/cms/customer/problems/Problem'));
+const OrderList = lazy(() => import('../pages/cms/customer/customer-list/OrderList'));
+// const Customer = lazy(() => import('../pages/cms/customer/customer-list/CustomerList'));
+// const Problem = lazy(() => import('../pages/cms/customer/problems/Problem'));
+const MyOrders = lazy(() => import ('../pages/cms/customer/problems/MyOrders'));
 
 //---- Employee
 const EmployeeList = lazy(() => import('../pages/cms/employees/employee-list/EmployeeList'));
@@ -158,18 +160,18 @@ const routes = (
 								path="customer-list"
 								element={
 									<Suspense fallback={<LoadingSpiner />}>
-										<Customer />
+										<OrderList />
 									</Suspense>
 								}
 							/>
-							<Route
+							{/* <Route
 								path="problems"
 								element={
 									<Suspense fallback={<LoadingSpiner />}>
-										<Problem />
+										<MyOrders />
 									</Suspense>
 								}
-							/>
+							/> */}
 						</Route>
 
 						<Route path="employees" element={<EmployeeLayout />}>

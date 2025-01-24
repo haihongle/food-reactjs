@@ -10,7 +10,7 @@ function Register() {
         password: '',
         confirmPassword: '',
         fullName: '',
-        primaryPhone: '',
+        phone: '',
         email: '',
     });
 
@@ -35,7 +35,7 @@ function Register() {
                 username: formData.username,
                 password: formData.password,
                 fullName: formData.fullName,
-                primaryPhone: formData.primaryPhone,
+                phone: formData.phone,
                 email: formData.email,
             });
 
@@ -46,7 +46,7 @@ function Register() {
                     password: '',
                     confirmPassword: '',
                     fullName: '',
-                    primaryPhone: '',
+                    phone: '',
                     email: '',
                 });
                 navigate('/cms/Login');
@@ -132,11 +132,11 @@ function Register() {
                                     </label>
                                     <input
                                         type="text"
-                                        name="primaryPhone"
-                                        id="primaryPhone"
+                                        name="phone"
+                                        id="phone"
                                         className="form-control"
                                         placeholder="Enter phone number"
-                                        value={formData.primaryPhone}
+                                        value={formData.phone}
                                         onChange={handleInputChange}
                                         required
                                     />

@@ -8,44 +8,44 @@ const S = 'SHIPPER';
 
 const sidebar = [
 	
-	{
-		item_name: 'Accountant', 
-		icon: <i className="fa-solid fa-pen-fancy"></i>,
-		path: 'accountant',
-		is_main: true,
-		roles: [M, A],
-		has_children: true,
-		children_item: [
-			{
-				item_name: 'Import Recipes',
-				icon: '-',
-				roles: [M, A],
-				path: 'accountant/import-recipe',
-				has_children: false,
-			},
-			{
-				item_name: 'Import History',
-				icon: '-',
-				roles: [M, A],
-				path: 'accountant/import-history',
-				has_children: false,
-			},
-			{
-				item_name: 'Export Recipes',
-				icon: '-',
-				roles: [M, A],
-				path: 'accountant/export-recipe',
-				has_children: false,
-			},
-			{
-				item_name: 'Export History',
-				icon: '-',
-				roles: [M, A],
-				path: 'accountant/export-history',
-				has_children: false,
-			},
-		],
-	},
+	// {
+	// 	item_name: 'Accountant', 
+	// 	icon: <i className="fa-solid fa-pen-fancy"></i>,
+	// 	path: 'accountant',
+	// 	is_main: true,
+	// 	roles: [M, A],
+	// 	has_children: true,
+	// 	children_item: [
+	// 		{
+	// 			item_name: 'Import Recipes',
+	// 			icon: '-',
+	// 			roles: [M, A],
+	// 			path: 'accountant/import-recipe',
+	// 			has_children: false,
+	// 		},
+	// 		{
+	// 			item_name: 'Import History',
+	// 			icon: '-',
+	// 			roles: [M, A],
+	// 			path: 'accountant/import-history',
+	// 			has_children: false,
+	// 		},
+	// 		{
+	// 			item_name: 'Export Recipes',
+	// 			icon: '-',
+	// 			roles: [M, A],
+	// 			path: 'accountant/export-recipe',
+	// 			has_children: false,
+	// 		},
+	// 		{
+	// 			item_name: 'Export History',
+	// 			icon: '-',
+	// 			roles: [M, A],
+	// 			path: 'accountant/export-history',
+	// 			has_children: false,
+	// 		},
+	// 	],
+	// },
 	{
 		item_name: 'Customers',
 		icon: <i className="fa-solid fa-user"></i>,
@@ -55,19 +55,19 @@ const sidebar = [
 		has_children: true,
 		children_item: [
 			{
-				item_name: 'Customer list',
+				item_name: 'Order List',
 				icon: '-',
 				roles: [U],
 				path: 'customers/customer-list',
 				has_children: false,
 			},
-			{
-				item_name: 'Problems',
-				icon: '-',
-				roles: [U],
-				path: 'customers/problems',
-				has_children: false,
-			},
+			// {
+			// 	item_name: 'Problems',
+			// 	icon: '-',
+			// 	roles: [U],
+			// 	path: 'customers/problems',
+			// 	has_children: false,
+			// },
 		],
 	},
 	{

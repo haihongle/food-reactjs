@@ -81,6 +81,26 @@ const shipOrder = async function (id, data) {
 	}
 };
 
+const history = async function (id, data) {
+	try{
+		const response = await app.get(`/orders/history/${id}`, data);
+		return response.data;
+	}
+	catch (error) {
+		throw error;
+	}
+}
+
+const deleteOrder = async function (id) {
+    try {
+        const response = await app.delete(`/order-dish/${id}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+
 const orderServices = {
 	getOrderList,
 	createOrder,
@@ -91,6 +111,8 @@ const orderServices = {
 	confirmPayment,
 	shipOrder,
 	changeOrderStatus,
+	history,
+	deleteOrder
 };
 
 export default orderServices;

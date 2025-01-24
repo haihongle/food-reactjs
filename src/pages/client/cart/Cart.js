@@ -101,7 +101,7 @@ function Cart() {
 		try {
 			setIsButtonDisabled(true); // Khóa nút
 			const response = await orderServices.createOrder(orderRequest);
-			Toast.success('Đơn hàng đã được tạo');
+			Toast.success('order successful');
 			setOrders([]);
 			localStorage.removeItem('order');
 			updateCartCount();
@@ -111,7 +111,7 @@ function Cart() {
 				paymentModalInstance.hide();
 			}
 		} catch (error) {
-			Toast.error('Lỗi khi tạo đơn hàng');
+			Toast.error('you need to log in to purchase');
 			console.error('Error creating order', error);
 		} finally {
 			setIsButtonDisabled(false); // Mở khóa nút nếu cần
@@ -224,6 +224,7 @@ function Cart() {
 									description: '',
 									promotionCode: '',
 									fullName: '',
+									// phone: '',
 									address: '',
 									paymentMethod: '',
 								}}
@@ -231,6 +232,7 @@ function Cart() {
 									description: Yup.string().required('Description is required'),
 									promotionCode: Yup.string(),
 									fullName: Yup.string().required('Name is required'),
+									// phone: Yup.string().required('Phone number is required'),
 									address: Yup.string().required('Address is required'),
 								})}
 								onSubmit={submitOrder}
@@ -256,6 +258,13 @@ function Cart() {
 													<div className="text-danger">{errors.fullName}</div>
 												) : null}
 											</div>
+											{/* <div className="col-5 d-flex align-items-center">phone number:</div>
+											<div className="col-7">
+												<Field className="form-control" name="phone" type="text" />
+												{touched.phone && errors.phone ? (
+													<div className="text-danger">{errors.phone}</div>
+												) : null}
+											</div> */}
 											<div className="col-5 d-flex align-items-center">Address:</div>
 											<div className="col-7">
 												<Field className="form-control" name="address" type="text" />

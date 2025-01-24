@@ -38,6 +38,12 @@ function ClientLayout() {
 								{cartCount > 0 && <span className={styles.cartCount}>{cartCount}</span>}
 							</Link>
 						</li>
+
+						<li>
+							<Link to="/cms/home">
+								<i className="fas fa-user"></i> MyOrders
+							</Link>
+						</li>
 				
 					</ul>
 				</nav>
@@ -60,7 +66,7 @@ function ClientLayout() {
 								</Link>
 							</li>
 							<li>
-								<Link to="/about">
+								<Link to="/">
 									<i className="fas fa-info-circle"></i> About Us
 								</Link>
 							</li>

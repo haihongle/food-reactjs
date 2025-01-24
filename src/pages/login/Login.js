@@ -37,7 +37,7 @@ function Login() {
                     navigate('/cms/home'); // Điều hướng đến CMS
                 }
                 if (decodedToken.role === 'USER') {
-                    navigate('/'); // Điều hướng đến trang mua sắm
+                    navigate('/cms/customers/customer-list'); // Điều hướng đến trang mua sắm
                 }
             } else {
                 // Xử lý trường hợp đăng nhập thất bại

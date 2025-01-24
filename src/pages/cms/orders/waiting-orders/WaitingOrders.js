@@ -128,6 +128,7 @@ function WaitingOrders({ status }) {
 	const toggleCancel = () => {
 		setCancel((previous) => !previous);
 	};
+	
 
 	return (
 		<>
@@ -202,6 +203,15 @@ function WaitingOrders({ status }) {
 						type: 'text',
 						className: 'col-md-6',
 					},
+					{
+						label: 'Phone Number',
+						field: 'primaryPhone',
+						type: 'text',
+						validation: Yup.string()
+						  .matches(/^[0-9]{10}$/, 'Phone number must be 10 digits') // Kiểm tra định dạng số điện thoại
+						  .required('Phone number is required'),
+						className: 'col-md-6',
+					  },
 					{
 						label: 'Promotion code',
 						field: 'promotionCode',
